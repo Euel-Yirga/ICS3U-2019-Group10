@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
+# /usr/bin/env python3
 
-# Created by: ????
-# Created on: ???? 2019
-# This file is the "????" game
-#   for CircuitPython
+# Created by: Euel Yirga and austin
+# Created on: January 2019
+# This programs shows a sprite, makes a sound,
+# shoots a laser and shows an alien
 
 import ugame
 import stage
@@ -273,6 +273,19 @@ def game_scene():
 
     # repeat forever game loop
     while True:
+        #move the ball
+        ball.move(ball.x + constants.BALL_SPEED, ball.y + constants.BALL_SPEED)
+
+        #check if touching top or bottom of the screen
+        if not 0 < ball.x < 150:
+            constants.BALL_SPEED= -constants.BALL_SPEED
+        if not 0 < ball.y < 118:
+            constants.BALL_SPEED = -constants.BALL_SPEED
+            #check if touching a paddle1
+            for ball in sprites :
+                if ball.x > 0:
+                    pass
+
         # get user input
         keys = ugame.buttons.get_pressed()
         #print(keys)
